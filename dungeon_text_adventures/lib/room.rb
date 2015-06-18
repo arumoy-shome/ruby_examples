@@ -8,5 +8,9 @@ module Game
       @description = description
       @connections = connections
     end
+
+    def full_description
+      puts "#{@name}\n\nYou are in #{@description}"
+    end
   end
 end

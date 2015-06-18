@@ -1,4 +1,5 @@
 require 'rspec-given'
+require 'pry'
 require 'game'
 
 RSpec.configure do |config|
