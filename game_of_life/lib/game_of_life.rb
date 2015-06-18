@@ -36,8 +36,6 @@ grid = [
   [1,0,0,1,0,1,1,0,1,1]
 ]
 
-neighbours = 0
-
 def life (grid)
   grid.each_with_index do |y, y_index|
     y.each_with_index do |x, x_index|
@@ -59,36 +57,36 @@ end
 def location(x, y)
   if top_row?(y)
     if top_left_corner?(x)
-      neighbours = grid[y][x+1] + grid[y+1][x]
+      grid[y][x+1] + grid[y+1][x]
 
     elsif top_right_corner?(x)
-      neighbours = grid[y][x-1] + grid[y+1][x]
+      grid[y][x-1] + grid[y+1][x]
 
     elsif sandwich_cell?(x)
-      neighbours = grid[y][x-1] + grid[y][x+1] + grid[y+1][x]
+      grid[y][x-1] + grid[y][x+1] + grid[y+1][x]
     end
 
   elsif bottom_row?(y)
     if bottom_left_corner?(x)
-      neighbours = grid[y][x+1] + grid[y-1][x]
+      grid[y][x+1] + grid[y-1][x]
 
     elsif top_right_corner?(x)
-      neighbours = grid[y][x-1] + grid[y-1][x]
+      grid[y][x-1] + grid[y-1][x]
 
     elsif sandwich_cell?(x)
-      neighbours = grid[y][x-1] + grid[y][x+1] + grid[y-1][x]
+      grid[y][x-1] + grid[y][x+1] + grid[y-1][x]
     end
 
   elsif sandwich_row?(y)
     if first_cell?(x)
-      neighbours = grid[y-1][x] + grid[y][x+1] + grid[y+1][x]
+      grid[y-1][x] + grid[y][x+1] + grid[y+1][x]
 
     elsif last_cell?(x)
-      neighbours = grid[y-1][x] + grid[y][x-1] + grid[y+1][x]
+      grid[y-1][x] + grid[y][x-1] + grid[y+1][x]
     end
 
   else
-    neighbours = grid[y-1][x] + grid[y][x-1] + grid[y][x+1] + grid[y+1][x]
+    grid[y-1][x] + grid[y][x-1] + grid[y][x+1] + grid[y+1][x]
   end
 end
 
