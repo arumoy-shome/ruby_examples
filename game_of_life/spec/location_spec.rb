@@ -1,9 +1,24 @@
 require 'spec_helper'
 
 describe Location do
-  let(location){Location.new(2, 3)}
+  Given(:cell){
+  [
+    [1,0,0,1,0,1,1,0,1,1],
+    [1,0,0,1,0,1,1,0,1,1],
+    [1,0,0,1,0,1,1,0,1,1],
+    [1,0,0,1,0,1,1,0,1,1],
+    [1,0,0,1,0,1,1,0,1,1],
+    [1,0,0,1,0,1,1,0,1,1],
+    [1,0,0,1,0,1,1,0,1,1],
+    [1,0,0,1,0,1,1,0,1,1],
+    [1,0,0,1,0,1,1,0,1,1],
+    [1,0,0,1,0,1,1,0,1,1]
+  ]
+}
+  Given(:location){Location.new(2, 3, cell)}
 
-  it "works..." do
-    expect(location.top_row?).to eq false
+  context "it works" do
+    When(:fate){location.top_row?}
+    Then{expect(fate).to be false}
   end
 end
