@@ -4,7 +4,7 @@ module Game
 
     def initialize(name)
       @name = name
-      @locatin = location
+      @location = location
     end
   end
 end
