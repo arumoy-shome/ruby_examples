@@ -42,10 +42,10 @@ class Game
     @grid = grid
   end
 
-  def life (grid)
-    grid.each_with_index do |y, y_index|
+  def life
+    @grid.each_with_index do |y, y_index|
       y.each_with_index do |x, x_index|
-        fate = location(x_index + 1, y_index) + location(x_index - 1, y) + location(x_index, y_index - 1) + location(x_index, y_index + 1)
+        fate = location(x_index + 1, y_index) + location(x_index - 1, y_index) + location(x_index, y_index - 1) + location(x_index, y_index + 1)
 
         if alive?(x) && fate < 2
           x = 0

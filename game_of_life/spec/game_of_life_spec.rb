@@ -45,20 +45,9 @@ describe Game do
   end
 
   describe 'life' do
-    context 'top left corner' do
-      
-    end
-
-    context 'top right corner' do
-
-    end
-
-    context 'bottom left corner' do
-
-    end
-
-    context 'bottom right corner' do
-
+    context 'first itiration' do
+      Given{new_game.life}
+      Then{expect(grid[0,0]).to eq 0}
     end
   end
 end
