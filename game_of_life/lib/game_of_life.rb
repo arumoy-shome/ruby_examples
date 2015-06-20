@@ -23,23 +23,30 @@
 # - method to count neighbours and return it
 # - life method makes the appropriate decision depending on count
 
-grid = [
-  [1,0,0,1,0,1,1,0,1,1],
-  [1,0,0,1,0,1,1,0,1,1],
-  [1,0,0,1,0,1,1,0,1,1],
-  [1,0,0,1,0,1,1,0,1,1],
-  [1,0,0,1,0,1,1,0,1,1],
-  [1,0,0,1,0,1,1,0,1,1],
-  [1,0,0,1,0,1,1,0,1,1],
-  [1,0,0,1,0,1,1,0,1,1],
-  [1,0,0,1,0,1,1,0,1,1],
-  [1,0,0,1,0,1,1,0,1,1]
-]
+# example_grid = [
+#   [1,0,0,1,0,1,1,0,1,1],
+#   [1,0,0,1,0,1,1,0,1,1],
+#   [1,0,0,1,0,1,1,0,1,1],
+#   [1,0,0,1,0,1,1,0,1,1],
+#   [1,0,0,1,0,1,1,0,1,1],
+#   [1,0,0,1,0,1,1,0,1,1],
+#   [1,0,0,1,0,1,1,0,1,1],
+#   [1,0,0,1,0,1,1,0,1,1],
+#   [1,0,0,1,0,1,1,0,1,1],
+#   [1,0,0,1,0,1,1,0,1,1]
+# ]
+require 'location'
+class Game
+
+  def initialize(grid)
+    @grid = grid
+  end
+end
 
 def life (grid)
   grid.each_with_index do |y, y_index|
     y.each_with_index do |x, x_index|
-      fate = location(x_index, y_index)
+      fate = location(x_index + 1, y_index) + location(x_index - 1, y) + location(x_index, y_index - 1) + location(x_index, y_index + 1)
 
       if alive?(x) && fate < 2
         x = 0
@@ -58,4 +65,12 @@ private
 
 def alive?(life)
   life == 1 ? true : false
+end
+
+def location(x, y)
+  if x < 0 || x >= @grid.length || y < 0 || y >= @grid.length
+    return 0
+  else
+    return @grid[y][x]
+  end
 end
